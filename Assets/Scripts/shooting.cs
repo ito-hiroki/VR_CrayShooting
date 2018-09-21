@@ -6,7 +6,7 @@ public class shooting : MonoBehaviour {
 
     public GameObject bulletPrefab;
 
-    public float speed = 1000;
+    public float speed = 1500;
 
     void Update()
     {
@@ -26,7 +26,6 @@ public class shooting : MonoBehaviour {
             Vector3 force;
             force = this.gameObject.transform.forward * speed;
             bullet.GetComponent<Rigidbody>().AddForce(force);
-            
         }
     }
 }
