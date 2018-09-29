@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class target : MonoBehaviour {
 
     public GameObject controller;
+    public GameObject explode;
     public int targetSpeed;
 
     // Use this for initialization
@@ -45,7 +46,11 @@ public class target : MonoBehaviour {
         {
             Debug.Log("Hit");
             device.TriggerHapticPulse(1000);
+            Transform explodePos = coll.gameObject.transform;
             Destroy(coll.gameObject);
+            var explosion = Instantiate(explode, this.transform.position, Quaternion.identity);
+            explosion.AddComponent<DestroyByTime>();
+            explosion.GetComponent<DestroyByTime>().lifeTime = 2.0f;
             // Destroy(this.gameObject);
         }
     }
